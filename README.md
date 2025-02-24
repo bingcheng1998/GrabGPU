@@ -1,27 +1,19 @@
 # 抢占显卡脚本
-[知乎介绍](https://zhuanlan.zhihu.com/p/449629487)
 
-## 下载方法（向下兼容）
 
-**CUDA 10.1:**  
-```shell
-wget https://github.com/godweiyang/GrabGPU/releases/download/v1.0.1/gg_cu101
-```
-
-**CUDA 11.0:**  
-```shell
-wget https://github.com/godweiyang/GrabGPU/releases/download/v1.0.1/gg_cu110
-```
-
-**CUDA 12.1:**  
-```shell
-wget https://github.com/godweiyang/GrabGPU/releases/download/v1.0.1/gg_cu121
-```
-
-## 如果你的 CUDA 版本不适配，请自行编译
+## 使用前编译
 
 ```shell
 nvcc gg.cu -o gg
+```
+
+## 修改占有率
+
+gg.cu 文件开头
+```cuda
+const int max_block_dim = 1024;
+const int max_sleep_time = 1e3;
+const float sleep_interval = 1e16;
 ```
 
 ## 抢占到显卡后自动执行默认脚本
